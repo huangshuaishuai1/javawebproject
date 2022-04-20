@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>水果信息</title>
+    <style>
+        a{
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+        .mybutton{
+            width: 100%;
+            text-align: center;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <table align="center" border="1px "  width="20%">
+        <thead>
+            <tr>
+                <th>水果名</th>
+                <th>水果数量</th>
+                <th>水果单价</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody th:if="${#lists.isEmpty(session.fruitList)}">
+            <td colspan="3">抱歉！没有查询到你搜索的数据！</td>
+        </tbody>
+        <tbody th:if="${not #lists.isEmpty(session.fruitList)}">
+            <tr th:each="fruit:${session.fruitList}" >
+                <td th:text="${fruit.name}" align="center">name</td>
+                <td th:text="${fruit.count}" align="center">count</td>
+                <td th:text="${fruit.price}" align="center">price</td>
+<!--                <td><a th:href="@{'/edit?id='${fruit.id}}">修改</a><a>删除</a></td>-->
+                <td><a th:href="@{/edit(id=${fruit.id})}">修改</a> <a th:href="@{/delete(id=${fruit.id})}">删除</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mybutton">
+
+        <a th:href="@{/add}">添加新库存</a>
+
+    </div>
+
+
+
+</body>
+</html>

@@ -11,6 +11,7 @@
     <modules>
         <module>pro01</module>
         <module>pro02-javaweb-servlet</module>
+        <module>pro03</module>
     </modules>
 
     <properties>
